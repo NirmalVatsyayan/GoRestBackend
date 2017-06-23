@@ -1,0 +1,7 @@
+{
+  "DB_HOST": "localhost",
+  "DB_USERNAME": "nirmal",
+  "DB_PASSWORD": "password",
+  "DB_PORT": 27017,
+  "DB_NAME": "nirmal"
+}
