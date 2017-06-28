@@ -25,7 +25,6 @@ const (
 var (
 	mongo *mgo.Session
 	db string
-	currentUser models.User
 )
 
 func fatal(err error) {
@@ -146,6 +145,8 @@ func LoginHandler(c *gin.Context) {
 }
 
 func RefreshHandler(c *gin.Context) {
+	currentUser := c.MustGet("user").(models.User)
+
 	expire := time.Now().Add(ExpireTime)
 
 	// Create the token
@@ -193,7 +194,7 @@ func Auth() gin.HandlerFunc {
 			return
 		}
 
-		currentUser = user
+		c.Set("user", user)
 	}
 }
 
@@ -211,6 +212,9 @@ func initDB() {
 }
 
 func HelloHandler(c *gin.Context) {
+
+	currentUser := c.MustGet("user").(models.User)
+
 	currentTime := time.Now()
 	currentTime.Format(time.RFC3339)
 	c.JSON(200, gin.H{
