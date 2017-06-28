@@ -3,5 +3,5 @@
   "DB_USERNAME": "nirmal",
   "DB_PASSWORD": "password",
   "DB_PORT": 27017,
-  "DB_NAME": "nirmal"
+  "DB_NAME": "test_db"
 }
